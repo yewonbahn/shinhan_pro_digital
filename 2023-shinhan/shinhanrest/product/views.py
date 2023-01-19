@@ -71,9 +71,10 @@ class CommentDetailView(
     serializer_class=CommentSerializer
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
-            comments = Comment.objects.filter(product__pk=pk)
-        return comments.order_by('-id')
+        product_id=self.kwargs.get('product_id')
+        if product_id:
+            return Comment.objects.filter(product_id=product_id).order_by('-id')
+        return Comment.objects.none()
 
     def get(self,request,*args,**kwargs):
         return self.retrieve(request,args,kwargs)
