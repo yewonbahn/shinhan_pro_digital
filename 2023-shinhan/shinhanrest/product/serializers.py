@@ -2,6 +2,10 @@ from rest_framework import serializers
 from .models import Product,Comment,Like
 
 class ProductSerializer(serializers.ModelSerializer):
+    comment_count = serializers.SerializerMethodField();
+
+    def get_comment_count(self,obj):
+        return obj.comment_set.all().count();
 
     class Meta:
         model = Product
