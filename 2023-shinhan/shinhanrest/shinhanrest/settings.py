@@ -147,3 +147,6 @@ AUTH_USER_MODEL = "member.Member"
 AUTHENTICATION_BACKENDS = [
     "member.auth.MemberAuth"
 ]
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
