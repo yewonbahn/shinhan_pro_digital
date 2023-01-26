@@ -19,7 +19,6 @@ class ProductListView(
     pagination_class = ProductLargePagination
     # permission_classes =[IsAuthenticated]
 
-
     def get_queryset(self):
         products = Product.objects.all().prefetch_related("comment_set")
         name = self.request.query_params.get('name')
